@@ -7,6 +7,15 @@ const PostCreate = (props) => (
             <TextInput label="Title" source="title" />
             <SelectInput
                 label="Status"
+                source="UserId"
+                choices={[
+                    { id: '1', name: 'Emmanuel Gaitann' },
+                    { id: '2', name: 'Gaitann Emmanuel' },
+                    { id: '3', name: 'Kouedi G' },
+                        ]}
+                        />
+            <SelectInput
+                label="Status"
                 source="status"
                 choices={[
                     { id: 'published', name: 'Published' },

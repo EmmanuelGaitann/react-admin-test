@@ -7,7 +7,7 @@ const PostEdit = (props) => (
             <TextInput label="Title" source="title" />
             <SelectInput
                 label="Status"
-                source="status"
+                source="UserId"
                 choices={[
                     { id: 'published', name: 'Published' },
                     { id: 'draft', name: 'Draft' },
