@@ -13,6 +13,7 @@
     "react": "^19.0.0",
     "react-admin": "^5.5.2",
     "react-dom": "^19.0.0",
+    "react-inline-editing": "^1.0.10",
     "react-scripts": "5.0.1",
     "recharts": "^2.15.1",
     "web-vitals": "^4.2.4"
