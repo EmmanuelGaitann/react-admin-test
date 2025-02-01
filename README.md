@@ -18,7 +18,9 @@ Si ces outils ne sont pas installés, vous pouvez les télécharger depuis :
    ```bash
    git clone https://github.com/votre-utilisateur/react-admin-test.git
 
-2. Accédez au dossier : cd react-admin-test
-3. Installez les dépendances: npm install
-4. Lancer le serveur json : node server.js
-5. Lancer l'application : npm start
+    - Accédez au dossier : cd react-admin-test
+    - Installez les dépendances: npm install
+    - Lancer le serveur json : node server.js
+    - Lancer l'application : npm start
+
+Les contributions sont les bienvenues ! Si vous avez des améliorations ou des corrections, ouvrez une pull request.
