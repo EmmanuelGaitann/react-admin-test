@@ -1,0 +1,11 @@
+{
+    "users": [
+      { "id": 1, "name": "John Doe", "email": "john@example.com" },
+      { "id": 2, "name": "Jane Smith", "email": "jane@example.com" }
+    ],
+    "posts": [
+      { "id": 1, "title": "My first post", "authorId": 1, "published": true },
+      { "id": 2, "title": "Another post", "authorId": 2, "published": false }
+    ]
+  }
+  
