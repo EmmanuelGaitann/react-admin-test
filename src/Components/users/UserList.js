@@ -7,11 +7,11 @@ const UserList = (props) => {
     const notify = useNotify();
     const refresh = useRefresh();
     
-    const [openDialog, setOpenDialog] = React.useState(false); // État pour afficher la boîte de dialogue de confirmation
-    const [selectedIds, setSelectedIds] = React.useState([]); // État pour les utilisateurs sélectionnés
-    const [isProcessing, setIsProcessing] = React.useState(false); // Indicateur pour l'état de traitement
+    const [openDialog, setOpenDialog] = React.useState(false);
+    const [selectedIds, setSelectedIds] = React.useState([]); 
+    const [isProcessing, setIsProcessing] = React.useState(false); 
 
-    // Fonction de désactivation des utilisateurs
+    
     const disableUsers = async () => {
         setIsProcessing(true);
         try {
@@ -22,7 +22,7 @@ const UserList = (props) => {
             );
             notify('Les utilisateurs ont été désactivés avec succès', 'success');
             refresh();
-            setOpenDialog(false); // Ferme la boîte de dialogue
+            setOpenDialog(false); 
         } catch (error) {
             notify('Erreur lors de la désactivation des utilisateurs', 'error');
         } finally {
@@ -41,17 +41,16 @@ const UserList = (props) => {
                     <EditButton />
                 </Datagrid>
 
-                {/* Toolbar d'actions en bloc */}
                 <BulkActionsToolbar
                     label="Actions"
                     selectedIds={selectedIds}
                     onSelectIds={setSelectedIds}
                 >
-                    {/* Bouton personnalisé pour désactiver */}
+
                     <Button
                         color="primary"
-                        onClick={() => setOpenDialog(true)}  // Affiche la boîte de dialogue de confirmation
-                        disabled={selectedIds.length === 0} // Désactive si aucun utilisateur n'est sélectionné
+                        onClick={() => setOpenDialog(true)} 
+                        disabled={selectedIds.length === 0} 
                     >
                         Désactiver les utilisateurs
                     </Button>
