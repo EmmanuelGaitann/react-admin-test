@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';  // Importation des hooks useState et useEffect
-import { Admin, Resource } from 'react-admin';
+import React, { useState, useEffect } from 'react';
+import { Admin, Resource, AppBar, Layout } from 'react-admin';
+import { Button, Box } from '@mui/material';
 import dataProvider from './config/dataProvider';
 import authProvider from './config/authProvider';
 import { lightTheme, darkTheme } from './config/theme';
@@ -14,47 +15,70 @@ import UserCreate from './Components/users/UserCreate';
 import UserShow from './Components/users/UserShow';
 
 import Dashboard from './dashboard/dashboard';
-import { Button } from '@mui/material'; // Ajout de MUI pour un meilleur design
+
+
+const CustomAppBar = ({ darkMode, toggleDarkMode, ...props }) => (
+  <AppBar {...props}>
+    <Box sx={{ flexGrow: 1 }} /> 
+    <Button
+      onClick={toggleDarkMode}
+      color="inherit"
+      sx={{ marginRight: 2 }}
+    >
+      {darkMode ? '🌞 Mode Clair' : '🌙 Mode Sombre'}
+    </Button>
+  </AppBar>
+);
+
+const CustomLayout = (props) => (
+  <Layout
+    {...props}
+    appBar={(appBarProps) => (
+      <CustomAppBar {...appBarProps} darkMode={props.darkMode} toggleDarkMode={props.toggleDarkMode} />
+    )}
+  />
+);
 
 const App = () => {
-  // Déclaration de l'état pour le mode sombre
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('theme') === 'dark';
   });
 
-  // Effet pour sauvegarder le thème dans localStorage à chaque changement
+  const [key, setKey] = useState(0);
+
   useEffect(() => {
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
-  return (
-    <div>
-      {/* ✅ Bouton bien positionné en haut à droite */}
-      <Button 
-        variant="contained" 
-        onClick={() => setDarkMode(!darkMode)} 
-        sx={{ position: 'absolute', top: 10, right: 10 }}
-      >
-        {darkMode ? '🌞 Mode Clair' : '🌙 Mode Sombre'}
-      </Button>
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => !prev);
+    setKey((prev) => prev + 1);
+  };
 
-      <Admin theme={darkMode ? darkTheme : lightTheme} dataProvider={dataProvider} authProvider={authProvider} dashboard={Dashboard}>
-        <Resource 
-          name="posts" 
-          list={PostList} 
-          edit={PostEdit} 
-          create={PostCreate} 
-          show={PostShow} 
-        />
-        <Resource 
-          name="users" 
-          list={UserList} 
-          edit={UserEdit} 
-          create={UserCreate} 
-          show={UserShow} 
-        />
-      </Admin>
-    </div>
+  return (
+    <Admin
+      key={key} 
+      theme={darkMode ? darkTheme : lightTheme}
+      dataProvider={dataProvider}
+      authProvider={authProvider}
+      dashboard={Dashboard}
+      layout={(props) => <CustomLayout {...props} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}
+    >
+      <Resource 
+        name="posts" 
+        list={PostList} 
+        edit={PostEdit} 
+        create={PostCreate} 
+        show={PostShow} 
+      />
+      <Resource 
+        name="users" 
+        list={UserList} 
+        edit={UserEdit} 
+        create={UserCreate} 
+        show={UserShow} 
+      />
+    </Admin>
   );
 };
 

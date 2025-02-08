@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid, TextField, EmailField, EditButton, ShowButton, BulkActionsToolbar, useNotify, useDataProvider, useRefresh, Button } from 'react-admin';
+import { List, Datagrid, TextField, EditButton, ShowButton, BulkActionsToolbar, useNotify, useDataProvider, useRefresh, Button } from 'react-admin';
 import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 
 const UserList = (props) => {
@@ -56,7 +56,6 @@ const UserList = (props) => {
                 </BulkActionsToolbar>
             </List>
 
-            {/* Boîte de dialogue de confirmation */}
             <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
                 <DialogTitle>Confirmer la désactivation</DialogTitle>
                 <DialogContent>
@@ -69,8 +68,8 @@ const UserList = (props) => {
                     <Button
                         onClick={disableUsers}
                         color="primary"
-                        disabled={isProcessing} // Désactive le bouton pendant le traitement
-                    >
+                        disabled={isProcessing} 
+                        >
                         {isProcessing ? 'Désactivation en cours...' : 'Confirmer'}
                     </Button>
                 </DialogActions>

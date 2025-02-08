@@ -2,8 +2,8 @@ import { createTheme } from '@mui/material/styles';
 
 const lightTheme = createTheme({
     palette: {
-        primary: { main: '#1976d2' }, // Bleu
-        secondary: { main: '#dc004e' }, // Rouge
+        primary: { main: '#0787b5' }, 
+        secondary: { main: '#f7752a' },//#1976d2
         background: { default: '#f4f6f8' },
     },
     typography: {
@@ -18,7 +18,7 @@ const darkTheme = createTheme({
         mode: 'dark',
         primary: { main: '#90caf9' },
         secondary: { main: '#f48fb1' },
-        background: { default: '#121212' },
+        background: { default: '#292828' },
     },
     typography: {
         fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
