@@ -1,19 +1,22 @@
 import React from 'react';
-import { Create, SimpleForm, TextInput, SelectInput, DateInput } from 'react-admin';
+import { Create, SimpleForm, TextInput, DateInput, SelectInput, ReferenceInput } from 'react-admin';
 
 const PostCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput label="Title" source="title" />
+            <TextInput label="Titre" source="title" />
+            <DateInput label="Date de publication" source="publishedAt" />
             <SelectInput
-                label="Status"
+                label="Statut"
                 source="status"
                 choices={[
-                    { id: 'published', name: 'Published' },
-                    { id: 'draft', name: 'Draft' },
+                    { id: 'published', name: 'Publié' },
+                    { id: 'draft', name: 'Brouillon' }
                 ]}
             />
-            <DateInput label="Published At" source="publishedAt" />
+            <ReferenceInput label="Utilisateur" source="userId" reference="users">
+                <SelectInput optionText="name" />
+            </ReferenceInput>
         </SimpleForm>
     </Create>
 );

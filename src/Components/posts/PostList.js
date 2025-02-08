@@ -1,20 +1,23 @@
+// src/Components/posts/PostList.js
 import React from 'react';
-import { List, Datagrid, TextField, DateField, ReferenceField, EditButton, ShowButton, Filter } from 'react-admin';
-import PostFilter from './PostFilter';  
+import { List, Datagrid, TextField, ReferenceField, DateField, EditButton } from 'react-admin';
 
 const PostList = (props) => (
-    <List {...props} filters={<PostFilter />} perPage={25} sort={{ field: 'publishedAt', order: 'DESC' }}>
-        <Datagrid rowClick="show">
-            <TextField source="title" />
-            <ReferenceField label="Author" source="userId" reference="users">
-                <TextField source="name" />
-            </ReferenceField>
-            <DateField source="publishedAt" />
-            <TextField source="status" />
-            <ShowButton />
-            <EditButton />
-        </Datagrid>
-    </List>
+  <List {...props}>
+    <Datagrid>
+      <TextField source="id" />
+      <TextField source="title" />
+      <ReferenceField source="userId" reference="users">
+        <TextField source="name" />
+      </ReferenceField>
+      <DateField source="published_at" />
+      <TextField source="status" sx={(record) => ({
+        color: record.status === "Published" ? "green" : "gray",
+        fontWeight: "bold"
+      })}/>
+      <EditButton />
+    </Datagrid>
+  </List>
 );
 
-export default PostList;
+export default PostList; // ✅ Assure-toi d'avoir cet export

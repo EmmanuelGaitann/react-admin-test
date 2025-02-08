@@ -36,7 +36,6 @@ const UserList = (props) => {
                 <Datagrid rowClick="show">
                     <TextField source="id" />
                     <TextField source="name" />
-                    <EmailField source="email" />
                     <ShowButton />
                     <EditButton />
                 </Datagrid>
