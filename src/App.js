@@ -25,7 +25,7 @@ const CustomAppBar = ({ darkMode, toggleDarkMode, ...props }) => (
       color="inherit"
       sx={{ marginRight: 2 }}
     >
-      {darkMode ? '🌞 Mode Clair' : '🌙 Mode Sombre'}
+      {darkMode ? ' Mode Clair' : ' Mode Sombre'}
     </Button>
   </AppBar>
 );
